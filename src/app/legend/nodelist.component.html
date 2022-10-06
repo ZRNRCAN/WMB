@@ -1,0 +1,179 @@
+<div id="legendContainer" hidden>
+
+  <div id="legend" class="legend" tagName="legend">
+    
+    <mat-selection-list #layers>
+      
+      <mat-selection-list [multiple]="false">
+        <mat-list-option class="list-option" color="primary" *ngFor="let item of tabToggle" selected="{{ item.select }}"
+          [value]="item.value" matTooltip="{{ item.description }}" matTooltipPosition="right" title="{{item.viewValue}}"
+          (keydown.enter)="allTabsToggle()" (click)="allTabsToggle()">
+          <img matListAvatar srcset="{{ item.image }}" alt="">
+          {{item.viewValue}}
+        </mat-list-option>
+      </mat-selection-list>
+
+      <!--<mat-list-option #testBase class="list-option" color="primary" *ngFor="let item of basemapToggle" selected="{{ item.select }}"
+        [value]="item.value" matTooltip="{{ item.description }}" matTooltipPosition="right" title="{{item.viewValue}}"
+        (keydown.enter)="change(item.value, 'anno')" (click)="toggleBasemap2()">
+        <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+        {{item.viewValue}}
+      </mat-list-option>-->
+
+      <div class="mat-list-item-content basemap-label" (click)="toggleBasemap()">
+        <img id="basemap-image" matListAvatar srcset="./assets/images/legend-3-2.png" alt="test">
+        <label class="basemap-text" i18n i18n-title title="Basemap">Basemap</label>
+        <input id="basemap-check" class="basemap-checkbox" placeholder="basemap" type="checkbox" name="basemap[]" checked>
+      </div>
+      
+      <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsText" selected="{{ item.select }}"
+        [value]="item.value" matTooltip="{{ item.description }}" matTooltipPosition="right" title="{{item.viewValue}}"
+        (keydown.enter)="change(item.value, 'anno')" (click)="change(item.value, 'anno')">
+        <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+        {{item.viewValue}}
+      </mat-list-option>
+
+      <div id="legend_group" #layers>
+
+        <details id="ancillary_line">
+          <summary i18n>Ancillary Line</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsAncillaryLine"
+            selected="{{ item.select }}" [value]="item.value" matTooltip="{{ item.description }}"
+            matTooltipPosition="right" title="{{item.viewValue}}" (keydown.enter)='change(item.value, item.service)'
+            (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="survey_in_progress">
+          <summary i18n>Survey in Progress</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsSurveyInProgress"
+            selected="{{ item.select }}" [value]="item.value" matTooltip="{{ item.description }}"
+            matTooltipPosition="right" title="{{item.viewValue}}" (keydown.enter)='change(item.value, item.service)'
+            (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="mineral_claim">
+          <summary i18n>Mineral Claim</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsMineralClaim"
+            selected="{{ item.select }}" [value]="item.value" matTooltip="{{ item.description }}"
+            matTooltipPosition="right" title="{{item.viewValue}}" (keydown.enter)='change(item.value, item.service)'
+            (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="yukon_first_nation">
+          <summary i18n>Yukon First Nation</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsYukonFirstNation"
+            selected="{{ item.select }}" [value]="item.value" matTooltip="{{ item.description }}"
+            matTooltipPosition="right" title="{{item.viewValue}}"
+            (keydown.enter)='change(item.value, item.service)'
+            (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="cree_naskapi">
+          <summary i18n>Cree-Naskapi</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsCreeNaskapi"
+            selected="{{ item.select }}" disabled="{{ item.disable }}" [value]="item.value"
+            matTooltip="{{ item.description }}" matTooltipPosition="right" title="{{item.viewValue}}"
+            (keydown.enter)='change(item.value, item.service)'
+            (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="oil_and_gas">
+          <summary i18n>Oil and Gas Exploitation</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsOilAndGas"
+            selected="{{ item.select }}" disabled="{{ item.disable }}" [value]="item.value"
+            matTooltip="{{ item.description }}" matTooltipPosition="right" title="{{item.viewValue}}"
+            (keydown.enter)='change(item.value, item.service)'
+            (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="easement">
+          <summary i18n>Easement</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsEasement"
+            selected="{{ item.select }}" [value]="item.value" matTooltip="{{ item.description }}"
+            matTooltipPosition="right" title="{{item.viewValue}}"
+            (keydown.enter)='change(item.value, item.service)'
+            (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="settlement_land">
+          <summary i18n>Settlement Land</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsSettlementLand"
+            selected="{{ item.select }}" disabled="{{ item.disable }}" [value]="item.value"
+            matTooltip="{{ item.description }}" matTooltipPosition="right" title="{{item.viewValue}}"
+            (keydown.enter)='change(item.value, item.service)'
+            (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="administrative_area">
+          <summary i18n>Administrative Area</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsAdministrativeArea"
+            selected="{{ item.select }}" disabled="{{ item.disable }}" [value]="item.description"
+            matTooltip="{{ item.description }}" matTooltipPosition="right" title="{{item.viewValue}}"
+            (keydown.enter)='change(item.value, item.service)'
+            (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="parcel">
+          <summary i18n>Parcel</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsParcel"
+            selected="{{ item.select }}" disabled="{{ item.disable }}" [value]="item.value"
+            matTooltip="{{ item.description }}" matTooltipPosition="right" title="{{item.viewValue}}"
+            (keydown.enter)='change(item.value, item.service)' (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="protected_area">
+          <summary i18n>Protected Area</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsProtectedArea"
+            selected="{{ item.select }}" [value]="item.value" disabled="{{ item.disable }}"
+            matTooltip="{{ item.description }}" matTooltipPosition="right" title="{{item.viewValue}}"
+            (keydown.enter)='change(item.value, item.service)' (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+        <details id="first_nation_land_management">
+          <summary i18n>First Nation Land Management</summary>
+          <mat-list-option class="list-option" color="primary" *ngFor="let item of itemsFirstNationLandManagement"
+            selected="{{ item.select }}" [value]="item.value" matTooltip="{{ item.description }}"
+            matTooltipPosition="right" title="{{item.viewValue}}" (keydown.enter)='change(item.value, item.service)'
+            (click)='change(item.value, item.service)'>
+            <img matListAvatar srcset="{{ item.image }}" alt="{{item.viewValue}}">
+            {{item.viewValue}}
+          </mat-list-option>
+        </details>
+
+      </div>
+    </mat-selection-list>
+  </div>
+</div>
