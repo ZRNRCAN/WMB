@@ -1,0 +1,56 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@ressources/*": ["src/app/ressources/*"],
+      "@service/*": ["src/app/service/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@search/*": ["src/app/search/*"],
+      "@app/*": ["src/app/*"],
+      "@environments/*": ["src/environments/*"]
+    },
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2017",
+    "module": "es2020",
+    "typeRoots": [
+      "node_modules/@types",
+    ],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": false
+  },
+  "exclude": [
+    "src/assets",
+    "dist"
+  ],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "allowJs": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
