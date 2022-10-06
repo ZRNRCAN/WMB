@@ -1,0 +1,469 @@
+<div id="search" class="search">
+  <form [formGroup]="form">
+    <mat-accordion class="wrapper">
+
+      <div class="wrapper">
+
+        <div class="mask select-search-options mat-select-trigger" aria-hidden="false">
+          <mat-form-field appearance="outline" i18n-title title="Select a search type">
+            <mat-label i18n>Available Searches</mat-label>
+            <mat-select (selectionChange)="selectedValue($event)">
+              <mat-option *ngFor="let option of options" [value]="option.value" title={{option.viewValue}}>
+                {{option.viewValue}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-expansion-panel #matExpansionPanel disabled>
+          <mat-expansion-panel-header i18n-title title="Expand or Collapse search options"></mat-expansion-panel-header>
+
+          <div class="container">
+            <div class="child-container">
+              <div class="input-search mat-select-trigger" aria-hidden="false" *ngIf="category.mainInput">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" title={{inputTitle}}>
+                    <mat-label>{{inputLabel}}</mat-label>
+                    <input matInput id="main" type="text" formControlName="mainInput" aria-label="input">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="select-search-nation" *ngIf="category.NationInput">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" i18n-title title="First Nation">
+                    <mat-label i18n>First Nation</mat-label>
+
+                    <input type="text" matInput i18n-placeholder placeholder="Enter a value" attr.aria-label="First Nations"
+                      formControlName="firstNatControl" [matAutocomplete]="auto">
+
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [panelWidth]="300"
+                      [displayWith]="displayValues">
+                      <mat-option *ngFor="let option of filteredOptionsNation | async" [value]="option"
+                        title={{option.viewValue}}>{{option.viewValue}}</mat-option>
+                    </mat-autocomplete>
+
+                     <!--<mat-error i18n *ngIf="firstNatControl.errors">Choose a value from suggested one</mat-error>-->
+
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="select-search-land" *ngIf="category.planInput">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" title='Plan'>
+                    <mat-label i18n>Plan Number</mat-label>
+                    <input matInput type="text" formControlName="planForParcel" name='plan' aria-label="Plan Number">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="select-search-land" *ngIf="category.ltoInput">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" i18n-title title='LTO'>
+                    <mat-label i18n>LTO</mat-label>
+                    <input matInput type="text" formControlName="lto" name='lto' aria-label="LTO">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="select-search-land" *ngIf="category.canLandInput">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" i18n-title title="Canada Land">
+                    <mat-label i18n>Canada Land</mat-label>
+
+                    <input type="text" matInput i18n-placeholder placeholder="Enter a value" attr.aria-label="Canada Lands"
+                      formControlName="canadaLandControl" [matAutocomplete]="auto">
+
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [panelWidth]="300"
+                      [displayWith]="displayValues">
+                      <mat-option *ngFor="let option of filteredOptionsLand | async" [value]="option"
+                        title={{option.viewValue}}>{{option.viewValue}}</mat-option>
+                    </mat-autocomplete>
+
+                    <mat-error i18n *ngIf="canadaLandControl.errors">Choose a value from suggested one</mat-error>
+
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="input-search mat-select-trigger" aria-hidden="false" *ngIf="category.tpGroup">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" i18n-title title="Section Name">
+                    <mat-label>Section</mat-label>
+                    <input matInput id="section" type="number" min="1" max="36" formControlName="sectionInput"
+                      aria-label="Section">
+                    <div i18n class="error-input" *ngIf="this.form.get('sectionInput')?.errors">Must be between 1 and 36
+                    </div>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="select-search-land" *ngIf="category.tpGroup">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" i18n-title title="Township">
+                    <mat-label i18n>Township</mat-label>
+                    <input matInput type="number" min="1" max="126" formControlName="townshipInput"
+                      aria-label="Township">
+                    <div i18n class="error-input" *ngIf="this.form.get('townshipInput')?.errors">Must be between 1 and
+                      126</div>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="select-search-land" *ngIf="category.tpGroup">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" i18n-title title="Range">
+                    <mat-label i18n>Range</mat-label>
+                    <input matInput type="number" min="1" max="40" formControlName="rangeInput" aria-label="Range">
+                    <div i18n *ngIf="this.form.get('rangeInput')?.errors">Must be between 1 and 33</div>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="select-search-direction" *ngIf="category.tpGroup">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" i18n-title title="Select a Direction">
+                    <mat-label>Direction</mat-label>
+                    <mat-select [(value)]="selectedDirection">
+                      <mat-option i18n value="E" i18n-title title="East">East</mat-option>
+                      <mat-option i18n value="W" i18n-title title="West">West</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="select-search-land" *ngIf="category.tpGroup">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" i18n-title title="Meridian">
+                    <mat-label i18n>Meridian</mat-label>
+                    <input matInput type="number" min="1" max="6" formControlName="meridianInput" aria-label="Meridian">
+                    <div i18n class="error-input" *ngIf="this.form.get('meridianInput')?.errors">Must be between 1 and 6
+                    </div>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="select-search-land" aria-hidden="false" *ngIf="category.adminGroup">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" i18n-title title="Select a search type">
+                    <mat-label i18n>Administrative Area type</mat-label>
+                    <mat-select (selectionChange)="selectedAdminValue($event)" [(value)]="selectedAdminType">
+                      <mat-option *ngFor="let type of adminElements" [value]="type.value" title={{type.viewValue}}>
+                        {{type.viewValue}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="select-search-province" aria-hidden="false" *ngIf="category.provSelect">
+                <div class="mat-select-trigger">
+                  <mat-form-field appearance="outline" i18n-title title="Select a Province or Territory">
+                    <mat-label i18n>Province or Territory</mat-label>
+                    <mat-select #province multiple [(value)]="selectedProv" (selectionChange)="province.close()">
+                      <mat-option *ngFor="let province of provinces" [value]="province.value"
+                        title={{province.viewValue}}>{{province.viewValue}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="child-container">
+              <div class="form-button">
+                <button type="submit" color="primary" class="angular-button" i18n-title title="Search"
+                  attr.aria-label="Search" (click)="submitSearch()">
+                  <mat-icon class="search-button" aria-hidden="true" attr.aria-label="Search">search</mat-icon>
+                </button>
+                <button type="button" i18n mat-icon-button color="primary" class="angular-button" i18n-title
+                  title="Clear" attr.aria-label="Clear" (click)="resetButton()">
+                  <mat-icon aria-hidden="true" attr.aria-label="Clear">clear</mat-icon>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </mat-expansion-panel>
+      </div>
+    </mat-accordion>
+  </form>
+</div>
+
+
+<div #tableBox id="tableResults" class="table-panel hidden" cdkDragBoundary=".mapView" cdkDrag
+  [hidden]="isCloseClicked">
+  <div class="tbl-header">
+    <div class="tbl-header-controls" cdkDragHandle>
+      <button mat-icon-button #menuTrigger="matMenuTrigger" class="menu-button angular-button"
+        [matMenuTriggerFor]="menu" [matMenuTriggerData]="menuListItems" aria-label="Menu" i18n-title title="Open Menu"
+        (click)="openMenu()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <span flex="" class="tbl-spacer flex" cdkDragHandle>
+      <mat-menu #menu="matMenu">
+        <ng-template matMenuContent let-name="name">
+          <button mat-menu-item *ngFor="let item of menuListItems" [disabled]="item.isDisabled"
+            (click)="clickMenuItem(item.tableId)">
+            <mat-icon>{{item.menuIcon}}</mat-icon>
+            <span>{{item.menuLinkText}}</span>
+          </button>
+        </ng-template>
+      </mat-menu>
+    </span>
+
+    <div class="tbl-header-controls">
+      <button mat-icon-button class="angular-button" color="primary" aria-label="Download" i18n-title
+        title="Download Results" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menuDownload">
+        <mat-icon>download</mat-icon>
+      </button>
+    </div>
+
+    <mat-menu #menuDownload="matMenu">
+      <ng-template matMenuContent let-name="name">
+        <button class="export-menu" mat-menu-item (click)="exportResult()">
+          <span>Export to csv</span>
+        </button>
+      </ng-template>
+    </mat-menu>
+
+    <div class="tbl-header-controls">
+      <button mat-icon-button color="primary" class="angular-button close-button" i18n-title title="Close Results"
+        (click)="tableBox.hidden=true;closeTable()">
+        <mat-icon aria-hidden="true" attr.aria-label="Close">close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="tbl-body" id="body-parent">
+    <div id="tabButton" [hidden]=true>
+      <button i18n="{i18n_metadata}" class="mat-stroked-button" id="parcelButton"
+        (click)="openTab('divParcel', parcelSort, parcelPaginator, parcelTable)">Parcels</button>
+      <button i18n class="mat-stroked-button" id="projectButton"
+        (click)="openTab('divProject', projectSort, projectPaginator, projectTable)">Surveys in Progress</button>
+      <button i18n class="mat-stroked-button" id="planButton"
+        (click)="openTab('divPlan', planSort, planPaginator, planTable)">Plan</button>
+      <button i18n class="mat-stroked-button" id="townButton"
+        (click)="openTab('divTownship', townSort, townPaginator, townTable)">Township</button>
+      <button i18n class="mat-stroked-button" id="adminButton"
+        (click)="openTab('divAdmin', adminSort, adminPaginator, adminTable)">Administrative Area</button>
+    </div>
+
+    <div>
+      <div class="hidden" id="divParcel">
+        <table mat-table #parcelTable="matTable" [dataSource]="dataSourceParcel" matSort #parcelSort="matSort"
+          class="mat-elevation-z8">
+          <ng-container matColumnDef="select">
+            <th i18n mat-header-cell *matHeaderCellDef>Select</th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox color="primary" i18n-title title="Select {{row.parcelName}}"
+                (change)="$event ? selection.toggle(row): null;" [checked]="selection.isSelected(row)"
+                (change)="changeRowSelection(row, 'parcel')">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="parcelName">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Parcel Designator">Parcel
+              Designator</th>
+            <td mat-cell class="table-link" *matCellDef="let element" i18n-title title="Zoom to {{element.parcelName}}"
+              (click)="zoomToElement(element.globalId, element.province)">{{element.parcelName}}</td>
+          </ng-container>
+          <ng-container matColumnDef="remainder">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Remainder">Remainder</th>
+            <td mat-cell *matCellDef="let element">{{element.remainder}}</td>
+          </ng-container>
+          <ng-container matColumnDef="planNumber">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Plan Number">Plan Number</th>
+            <td mat-cell class="table-link" *matCellDef="let element" i18n-title title="View plan detail"
+              (click)=openLink(element.planDetail)>{{element.planNumber}}</td>
+          </ng-container>
+          <ng-container matColumnDef="parcelType">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Parcel Type">Parcel Type</th>
+            <td mat-cell *matCellDef="let element">{{element.parcelType}}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['select', 'parcelName', 'remainder', 'planNumber', 'parcelType'] sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['select', 'parcelName', 'remainder', 'planNumber', 'parcelType'];" class="table-row"></tr>
+
+        </table>
+        <mat-paginator #parcelPaginator="matPaginator" [pageSize]="50" [pageSizeOptions]="[50, 100, 200]"
+          showFirstLastButtons class="mat-paginator-sticky"></mat-paginator>
+      </div>
+
+      <div class="hidden" id="divProject">
+        <table mat-table #projectTable="matTable" [dataSource]="dataSourceProject" matSort #projectSort="matSort"
+          class="mat-elevation-z8">
+          <ng-container matColumnDef="select">
+            <th i18n mat-header-cell *matHeaderCellDef>Select</th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox color="primary" i18n-title title="Select {{row.projectNumber}}"
+                (change)="$event ? selection.toggle(row): null;" [checked]="selection.isSelected(row)"
+                (change)="changeRowSelection(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="projectNumber">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Project Number">Project Number</th>
+            <td mat-cell class="table-link" *matCellDef="let element" i18n-title
+              title="Zoom to {{element.projectNumber}}" (click)="zoomToElement(element.globalId, element.province)">
+              {{element.projectNumber}}</td>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header title="Description">Description</th>
+            <td mat-cell *matCellDef="let element">{{element.description}}</td>
+          </ng-container>
+          <ng-container matColumnDef="detail">
+            <th i18n mat-header-cell *matHeaderCellDef>Detail</th>
+            <td i18n mat-cell class="table-link" *matCellDef="let element" i18n-title title="View project detail"
+              (click)=openLink(element.projectDetail)>View</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['select', 'projectNumber', 'description', 'detail'] sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['select', 'projectNumber', 'description', 'detail'];" class="table-row"></tr>
+        </table>
+        <mat-paginator i18n class="mat-paginator-sticky" #projectPaginator="matPaginator" [pageSize]="50"
+          [pageSizeOptions]="[50, 100, 200]" showFirstLastButtons></mat-paginator>
+      </div>
+
+      <div class="hidden" id="divPlan">
+        <table mat-table #planTable="matTable" [dataSource]="dataSourcePlan" matSort #planSort="matSort"
+          class="mat-elevation-z8">
+
+          <ng-container matColumnDef="select">
+            <th i18n mat-header-cell *matHeaderCellDef>Select</th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox color="primary" i18n-title title="Select {{row.planNumber}}"
+                (change)="$event ? selection.toggle(row): null; " [checked]="selection.isSelected(row)"
+                (change)="changeRowSelection(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="planNumber">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Plan Number">Plan Number</th>
+            <td mat-cell class="table-link" *matCellDef="let element" i18n-title title="Zoom to {{element.planNumber}}"
+              (click)="zoomToElement(element.globalId, element.province)">{{element.planNumber}}</td>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header title="Description">Description</th>
+            <td mat-cell *matCellDef="let element">{{element.description}}</td>
+          </ng-container>
+          <ng-container matColumnDef="dateSurvey">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Date of Survey">Date of Survey</th>
+            <td mat-cell *matCellDef="let element">{{element.dateSurvey}}</td>
+          </ng-container>
+          <ng-container matColumnDef="planLTO">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="LTO">LTO</th>
+            <td mat-cell *matCellDef="let element">{{element.planLTO}}</td>
+          </ng-container>
+          <ng-container matColumnDef="detail">
+            <th i18n mat-header-cell *matHeaderCellDef>Detail</th>
+            <td i18n class="table-link" mat-cell *matCellDef="let element" i18n-title title="View plan detail"
+              (click)=openLink(element.planDetail)>View</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['select', 'planNumber', 'description', 'dateSurvey', 'planLTO', 'detail'] sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['select', 'planNumber', 'description', 'dateSurvey', 'planLTO', 'detail'];" class="table-row"></tr>
+
+        </table>
+        <mat-paginator class="mat-paginator-sticky" #planPaginator="matPaginator" [pageSize]="50"
+          [pageSizeOptions]="[50, 100, 200]" showFirstLastButtons></mat-paginator>
+      </div>
+
+      <div class="hidden" id="divTownship">
+        <table mat-table #townTable="matTable" [dataSource]="dataSourceTown" matSort #townSort="matSort"
+          class="mat-elevation-z8">
+
+          <ng-container matColumnDef="select">
+            <th i18n mat-header-cell *matHeaderCellDef>Select</th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox color="primary" i18n-title title="Select township"
+                (change)="$event ? selection.toggle(row): null;" [checked]="selection.isSelected(row)"
+                (change)="changeRowSelection(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="sectionName">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Section">Section</th>
+            <td mat-cell class="table-link" *matCellDef="let element" i18n-title title="Zoom to township"
+              (click)="zoomToElement(element.globalId, element.province)">{{element.sectionName}}</td>
+          </ng-container>
+          <ng-container matColumnDef="townshipName">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Township">Township</th>
+            <td mat-cell *matCellDef="let element">{{element.townshipName}}</td>
+          </ng-container>
+          <ng-container matColumnDef="range">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Range">Range</th>
+            <td mat-cell *matCellDef="let element">{{element.range}}</td>
+          </ng-container>
+          <ng-container matColumnDef="meridian">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Meridian">Meridian</th>
+            <td mat-cell *matCellDef="let element">{{element.meridian}}</td>
+          </ng-container>
+          <ng-container matColumnDef="direction">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header title="Direction">Direction</th>
+            <td mat-cell *matCellDef="let element">{{element.direction}}</td>
+          </ng-container>
+          <ng-container matColumnDef="province">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Province/Territory">Province/Territory</th>
+            <td mat-cell *matCellDef="let element">{{element.province}}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['select', 'sectionName', 'townshipName', 'range', 'meridian', 'direction', 'province'] sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['select', 'sectionName', 'townshipName', 'range', 'meridian', 'direction', 'province'];" class="table-row"></tr>
+
+        </table>
+        <mat-paginator class="mat-paginator-sticky" #townPaginator="matPaginator" [pageSize]="50"
+          [pageSizeOptions]="[50, 100, 200]" showFirstLastButtons></mat-paginator>
+      </div>
+
+      <div class="hidden" id="divAdmin">
+        <table mat-table #adminTable="matTable" [dataSource]="dataSourceAdmin" matSort #adminSort="matSort"
+          class="mat-elevation-z8">
+          <ng-container matColumnDef="select">
+            <th i18n mat-header-cell *matHeaderCellDef>Select</th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox color="primary" i18n-title title="Select {{row.name}}"
+                (change)="$event ? selection.toggle(row): null; " [checked]="selection.isSelected(row)"
+                (change)="changeRowSelection(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Name">Name</th>
+            <td mat-cell class="table-link" *matCellDef="let element" i18n-title title="Zoom to {{element.name}}"
+              (click)="zoomToElement(element.globalId, element.province)">{{element.name}}</td>
+          </ng-container>
+          <ng-container matColumnDef="province">
+            <th i18n mat-header-cell *matHeaderCellDef mat-sort-header i18n-title title="Province/Territory">Province/Territory</th>
+            <td mat-cell *matCellDef="let element">{{element.province}}</td>
+          </ng-container>
+          <ng-container matColumnDef="dataset">
+            <th i18n mat-header-cell *matHeaderCellDef>Dataset</th>
+            <td mat-cell *matCellDef="let element" i18n-title title="Download cadastral dataset"
+              (click)=openLink(element.url)>
+              <mat-icon class="search-button table-button" aria-hidden="true" attr.aria-label="Search">download
+              </mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['select', 'name', 'province', 'dataset'] sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['select', 'name', 'province', 'dataset'];" class="table-row"></tr>
+
+        </table>
+        <mat-paginator class="mat-paginator-sticky" #adminPaginator="matPaginator" [pageSize]="50"
+          [pageSizeOptions]="[50, 100, 200]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+
+    <div class="container">
+      <div hidden id="result-message" class="child-container">
+        <h5 i18n>Click on tab to show results</h5>
+        <p i18n>Search results are limited to 1000</p>
+      </div>
+      <div hidden id="result-spinner" class="loader child-container"></div>
+    </div>
+
+  </div>
+  <div id="spatial-selection"></div>
+</div>

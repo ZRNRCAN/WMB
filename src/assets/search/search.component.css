@@ -1,0 +1,284 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+.wrapper { position: relative; }
+
+.search {
+  position: absolute;
+  left: 45px;
+  border-radius: 10px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+
+.mask {
+  position: absolute;
+  background: transparent;
+  width: calc(100% - 50px);
+  z-index: 1;
+}
+
+.mat-select-trigger {
+  width: 180px;
+  height: auto;
+}
+
+.error-input {
+  color: red;
+}
+
+
+.container {
+  width: max-content;
+  padding-left: 3px;
+}
+
+.child-container {
+  float: left;
+  text-align: center;
+}
+
+.form-button {
+  position: absolute;
+}
+
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  
+}
+
+.mat-stroked-button {
+  /*border: 1px solid currentColor;*/
+  padding: 0 15px;
+  line-height: 34px;
+}
+
+::ng-deep .mat-option {
+  font-size: 13px;
+  height: 3em !important;
+}
+::ng-deep .mat-accordion .mat-expansion-panel:last-of-type { border-radius: 10px !important; }
+
+::ng-deep .mat-expansion-panel { width: 265px; }
+::ng-deep .mat-expansion-panel-header:hover { background: white !important;}
+::ng-deep .mat-expansion-panel-body{ padding-left: 0 !important; }
+::ng-deep .mat-expansion-panel-header { 
+  padding-left: 0 !important; 
+  height: 50px;
+  background: white !important;
+}
+
+/*Mat-form-field*/
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.35em 0 !important;}
+::ng-deep .mat-form-field-flex {margin-top: -0.55em !important;}
+::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+  font-size: 13px;
+}
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  transform: translateY(-1.1em) scale(.75);
+  width: 133.33333%;
+}
+::ng-deep .mat-icon-button {
+  line-height: 30px !important;
+  height: 30px !important;
+}
+
+/* esri */
+::ng-deep .esri-sketch__feature-count-number {visibility: hidden;}
+::ng-deep .esri-sketch__info-count-section {visibility: hidden;}
+::ng-deep .esri-sketch__panel {max-width: 69.1px;}
+::ng-deep .esri-sketch__info-panel {height: 0px;}
+::ng-deep .esri-sketch__info-section {visibility: hidden;}
+::ng-deep .esri-sketch__info-count-section {visibility: hidden;}
+::ng-deep .icon-container {width: 300px;}
+::ng-deep .esri-sketch {
+  background-color: transparent;
+  height: 0px;
+}
+::ng-deep .esri-sketch__section:first-child {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+::ng-deep .esri-sketch__section:nth-child(2) {
+  background-color: white;
+  height: 30px;
+  margin-top: 0.5pt;
+  box-shadow: 0.2px 1px 2px 0.2px rgb(194, 194, 194);
+}
+
+/* Menu */
+.mat-menu-item {height: 40px !important;}
+
+/*Main input*/
+.input-search {
+  background-color: white;
+  display: flex;
+  margin: 10px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.reset-button {
+  position: absolute;
+  right: 6.5px;
+}
+
+/* Dropdown for search categories*/
+.select-search-options {
+  background-color: white;
+  display: flex;
+  margin: 12px;
+  margin-bottom: 0;
+}
+
+/*Dropdown for select options*/
+.select-search-nation,
+.select-search-province,
+.select-search-direction,
+.select-search-land {
+  background-color: white;
+  display: flex;
+  margin: 10px;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+/*Angular Table Element*/
+.mat-row {height: auto;}
+
+.mat-cell {
+  padding: 0px 8px 0px 0px;
+  line-height: 25px;
+}
+
+.mat-row:hover .mat-cell {background-color: whitesmoke;}
+
+.mat-cell, .mat-footer-cell {font-size: 13px;}
+
+.mat-paginator-sticky {
+  bottom: 0px;
+  font-size: 11px;
+  position: sticky;
+  z-index: 10;
+}
+.mat-table {min-width: -webkit-fill-available;}
+
+.table-row {height: 35px !important;}
+
+.mat-menu-content:not(:empty) {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.table-panel {
+  max-width: 100%;
+  resize: both;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  justify-content: center;
+  background: #fff;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+              0 2px 2px 0 rgba(0, 0, 0, 0.14),
+              0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.table-panel:active {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+::ng-deep .mat-sort-header-container {
+  padding-left: 0px;
+  padding-right: 10px;
+  line-height: 25px;
+}
+
+.table-link {
+  text-decoration: underline; 
+  cursor: pointer;
+}
+.table-button {cursor: pointer;}
+
+/*First item of the row in table*/
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+  padding-left: 10px;
+}
+
+td.mat-cell:first-of-type {
+  padding-left: 20px;
+}
+
+/*Hover button in table*/
+.close-button { flex-shrink: 0;}
+.angular-button:hover { color:cadetblue; }
+.angular-button:focus { outline:none; }
+.angular-button {
+  justify-content: center;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.search-button {vertical-align: baseline !important;}
+
+/*Menu in table*/
+.menu-button {
+  padding-top: 2px;
+  border-width: 0px;
+  background: transparent;
+}
+
+/*Table elemennts*/
+.tbl-header {
+  display: flex;
+  height: 30px;
+  margin: 5px;
+  justify-content: center;
+  cursor: move;
+}
+
+.tbl-header-controls {
+  justify-content: center;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.tbl-spacer {
+  flex: 1;
+  box-sizing: border-box;
+  letter-spacing: .01em;
+  font: 400 13px Roboto,sans-serif;
+  color: rgba(0,0,0,.87);
+  pointer-events: all;
+  white-space: nowrap;
+}
+
+.tbl-body {
+  position: relative;
+  resize: both;
+  height: 350px;
+  width: 650px;
+  max-width: 100%;
+  max-height: 40em;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: default;
+  background: #fff;
+  border-top: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
+}
