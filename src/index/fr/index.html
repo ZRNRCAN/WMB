@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr" dir="ltr">
+
+<head>
+  <base href="../">
+  <meta charset="utf-8">
+  <title>Navigateur cartographique</title>
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta name="dcterms.creator"
+    content="Gouvernement du Canada, Ressources naturelles Canada, Secteur des sciences de la Terre, Direction de l'arpenteur général">
+  <meta name="dcterms.language" content="fr">
+  <meta name="description"
+    content="Le système d'arpentage des terres du Canada offre des possibilités de recherche d'informations à l'aide d'un navigateur cartographique.">
+  <meta name="keywords"
+    content="syst&amp;egrave;me d'arpentage des terres du canada, satc, plans d'arpentage, division des lev&amp;eacute;s officiel, arpenteur g&amp;eacute;n&amp;eacute;ral, terres du canada">
+  <meta name="dcterms.title" content="Navigateur cartographique">
+
+  <!-- Load closure template scripts -->
+  <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/soyutils.js"></script>
+  <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/wet-fr.js"></script>
+  <noscript>
+    <!-- Write closure fall-back static file -->
+    <!-- /ROOT/etc/designs/canada/cdts/gcweb/v4_0_44/cdts/static/refTop.html -->
+    <!--#include virtual="/app/cls/WET/gcweb/v4_0_44/cdts/static/refTop.html" -->
+  </noscript>
+  <!-- Write closure template -->
+  <script>
+    document.write(wet.builder.refTop({
+      "webAnalytics": [{
+        "environment": "staging",
+        "version": 1
+      }]
+    }));
+  </script>
+
+  <script>
+    esriConfig = {
+      locale: "fr-CA"
+    };
+  </script>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css">
+
+</head>
+
+<body>
+  <div id="def-top">
+    <!-- Write closure fall-back static file -->
+    <!-- /ROOT/etc/designs/canada/cdts/gcweb/v4_0_44/cdts/static/top-fr.html -->
+    <!--#include virtual="/app/cls/WET/gcweb/v4_0_44/cdts/static/top-fr.html" -->
+  </div>
+  <!-- Write closure template -->
+  <script>
+    var defTop = document.getElementById("def-top");
+    defTop.outerHTML = wet.builder.top({
+      "lngLinks": [{
+        "lang": "en",
+        "href": "../en/index.html",
+        "text": "English"
+      }],
+      breadcrumbs: [
+        { "title": "Canada.ca", "href": "https:\/\/www.canada.ca\/fr.html" },
+        { "title": "Ressources naturelles Canada", "href": "https:\/\/www.rncan.gc.ca\/accueil" },
+        { "title": "Cartes, outils et publications", "href": "https:\/\/www.rncan.gc.ca\/cartes-outils-et-publications\/21449" },
+        { "title": "Cartes", "href": "https:\/\/www.rncan.gc.ca\/cartes-outils-et-publications\/cartes\/22021" },
+        { "title": "Arpentages des terres du Canada", "href": "https:\/\/www.rncan.gc.ca\/cartes-outils-et-publications\/cartes\/arpentage-terres-canada\/10798" },
+        { "title": "Arpentage des terres du Canada : outils et donn\u00e9es", "href": "https:\/\/www.rncan.gc.ca\/sciences-de-la-terre\/geomatique\/outils-et-applications-arpentage-des-terres-au-canada\/11095" },
+        { "title": "Navigateur cartographique"}
+      ]
+    });
+  </script>
+  <main property="mainContentOfPage" class="container" resource="#wb-main" typeof="WebPageElement">
+    <h1>Navigateur cartographique du SATC</h1>
+    <section class="alert alert-info">
+      <p class="mrgn-tp-md">Nous avons le plaisir de vous annoncer le lancement de ce nouveau navigateur cartographique du SATC. 
+        Les utilisateurs devraient mettre à jour leurs signets vers cette page. 
+        <a href="https://clss.nrcan-rncan.gc.ca/satc/map-carte/index">L’ancien navigateur cartographique du SATC</a> restera actif jusqu’en septembre 2022. 
+        Si vous avez besoin d’assistance en utilisant ce nouvel outil, veuillez nous contacter à l’adresse suivante : 
+        <a href="mailto://clss-satc@nrcan-rncan.gc.ca">clss-satc@nrcan-rncan.gc.ca</a>
+      </p>
+    </section>
+    <details class="mrgn-bttm-md">
+      
+      <summary class="summary">Aide - Cliquez pour afficher ou pour masquer l'aide</summary>
+      <div class="col-sm-12">
+        <p class="mrgn-tp-md">Le navigateur cartographique du SATC
+          permet aux utilisateurs de parcourir les données cadastrales du
+          Système d'arpentage des terres du Canada (SATC) pour rechercher et
+          pour visualiser les parcelles d'arpentage et les plans qui sont
+          maintenus par la Direction de l'arpenteur général (DAG). Les
+          utilisateurs peuvent naviguer dans la carte avec une souris ou un
+          clavier et rechercher les données avec les recherches attributs.</p>
+
+        <h2 class="mrgn-tp-md">Guide de l'utilisateur</h2>
+        <p>
+          Veuillez vous référer au <a href="/clss-satc/pdfs/clss-map-browser-22-fr.pdf">Guide de
+          l’utilisateur du navigateur cartographique du SATC</a> (PDF, 2.47 MO) pour plus d'information sur l'application.
+        </p>
+        <p>
+          Consulter notre <a href="/clss-satc/pdfs/clss-placemat-acc-f.pdf">document d'information</a> pour vous aider à choisir le bon outil.
+        </p>
+
+        <h2 class="mrgn-tp-md">Note aux utilisateurs de clavier</h2>
+        <p>La carte peut être contrôlée à l'aide du clavier. Veuillez
+          utiliser la touche de tabulation pour activer le commandes de la
+          carte. Les touches de navigation sont les suivantes:</p>
+        <ul>
+          <li>"+": zoom avant</li>
+          <li>"-": zoom arrière</li>
+          <li>Flèches: déplacement sur la carte</li>
+        </ul>
+
+        <h2 class="mrgn-tp-md">Exigences système</h2>
+        <p>Le navigateur cartographique du SATC est conçu pour
+          fonctionner dans différents navigateurs web et aucun module
+          d'extension n'est nécessaire. L'utilisation d'applications externes
+          est nécessaire pour accéder aux données reliées au navigateur
+          cartographique (par exemple, l'utilisateur aura besoin d'une
+          application externe pour afficher les images des plans
+          d'arpentages).</p>
+        <ul>
+          <li>JavaScript doit être activé</li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </details>
+
+    <div id="mapDiv" class="col-sm-12" data-dojo-type="dijit/layout/BorderContainer"
+      title="Système d'arpentage des terres du Canada - navigateur cartographique" tabindex="0" role="application">
+      <app-root></app-root>
+    </div>
+
+    <div id="def-preFooter">
+      <!-- Write closure fall-back static file -->
+      <!-- /ROOT/etc/designs/canada/cdts/gcweb/v4_0_44/cdts/static/preFooter-fr.html -->
+      <!--#include virtual="/gcweb/v4_0_44/cdts/static/preFooter-fr.html" -->
+    </div>
+    <!-- Write closure template -->
+    <script>
+      var defPreFooter = document.getElementById("def-preFooter");
+      defPreFooter.outerHTML = wet.builder.preFooter({
+        "dateModified": "2022-07-04"
+      });
+    </script>
+
+  </main>
+
+  <div id="def-footer">
+    <!-- #include file = "/gcweb/v4_0_44/cdts/static/footer-fr.html" -->
+  </div>
+
+  <!-- Write closure template -->
+  <script>
+    var defFooter = document.getElementById("def-footer");
+    defFooter.outerHTML = wet.builder.footer({
+    });
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"
+    integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB"
+    crossorigin="anonymous">
+  </script>
+
+  <!-- Write closure template -->
+  <script>
+    document.write(wet.builder.refFooter({
+      "webAnalytics": true
+    }));
+  </script>
+
+</body>
+
+</html>
