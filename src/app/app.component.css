@@ -1,0 +1,64 @@
+.esri-view {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.esri-view:fullscreen {
+  background-color: aliceblue !important;
+}
+
+.esri-widget--button.active path,
+.esri-widget--button.active:hover path,
+.esri-widget--button.active:focus path {
+  fill: #E4E4E4;
+}
+
+.esri-widget--button.active,
+.esri-widget--button.active:hover,
+.esri-widget--button.active:focus {
+  cursor: default;
+  background-color: #999696;
+}
+
+#mapViewNode {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+::ng-deep .area, ::ng-deep .distance, ::ng-deep .removeDist {
+  width: 35px ;
+  height: 35px ;
+  border: none ;
+}
+
+::ng-deep .toolbar {
+  width: 105px;
+  height: 25px;
+  display: flex;
+}
+
+::ng-deep .test-button, ::ng-deep .test-div {
+  background: transparent !important;
+}
+
+::ng-deep .esri-expand__content--expanded{
+  background-color: white;
+}
+
+.extent {
+  border: none;
+}
+
+.esri-button {
+  border: none;
+}
+.esri-coord {
+  padding: 7px 15px 5px;
+}
+.esri-extent-container {
+  display: flex;
+}

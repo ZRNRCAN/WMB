@@ -1,0 +1,34 @@
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>
+
+<div #mapViewNode class="mapView">
+
+  <div  class="esri-widget--button esri-interactive esri-icon-layers \ue659 esri-button" tabindex="0" id="legendButton" i18n-title title="Legend" ></div>
+
+  <div  class="esri-widget--button esri-interactive esri-icon-question \ue66c esri-button" tabindex="0" id="helpButton" i18n-title title="Help"></div>
+  
+  <div id="toolbar" class="toolbar esri-component esri-widget">
+    <div id="area" i18n-title title="Measure Area" class="area esri-widget--button esri-interactive esri-icon-measure-area"></div>
+    <div id="distance" i18n-title title="Measure Distance" class="distance esri-widget--button esri-interactive esri-icon-measure-line"></div>
+    <div id="removeDist" i18n-title title="Clear Measurements" class="removeDist esri-widget--button esri-interactive esri-icon-trash"></div>
+  </div>
+
+  <div class="esri-component esri-widget esri-extent-container" id="navToolbar" >
+    <div class="esri-widget--button esri-interactive esri-icon-left-triangle-arrow esri-button" tabindex="0" id="prevExtent" i18n-title title="Previous extent" ></div>
+    <div class="esri-widget--button esri-interactive esri-icon-right-triangle-arrow esri-button" tabindex="0" id="nextExtent" i18n-title title="Next extent" ></div>
+  </div>
+
+  <div id="coordsWidget" class="esri-component esri-widget esri-coord"></div>
+
+  <app-search></app-search>
+  <list-selection-example></list-selection-example>
+  
+</div>
