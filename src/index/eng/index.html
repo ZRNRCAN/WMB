@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-CA" dir="ltr">
+
+<head>
+  <base href="./">
+  <meta charset="utf-8">
+  <title>Map Browser</title>
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta name="dcterms.creator"
+    content="Government of Canada, Natural Resources Canada, Earth Sciences Sector, Surveyor General Branch">
+  <meta name="dcterms.language" content="en">
+  <meta name="description"
+    content="The Canada Lands Survey System provides capabilities to search for information using a map browser.">
+  <meta name="keywords"
+    content="canada lands survey system, clss, legal survey plans, legal surveys division, surveyor general, canada lands">
+  <meta name="dcterms.title" content="Map Browser">
+
+  <!-- Load closure template scripts -->
+  <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/soyutils.js"></script>
+  <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/wet-en.js"></script>
+  <noscript>
+    <!-- Write closure fall-back static file -->
+    <!-- /ROOT/etc/designs/canada/cdts/gcweb/v4_0_44/cdts/static/refTop.html -->
+    <!--#include virtual="/app/cls/WET/gcweb/v4_0_44/cdts/static/refTop.html" -->
+  </noscript>
+  <!-- Write closure template -->
+  <script>
+    document.write(wet.builder.refTop({
+      "webAnalytics": [{
+        "environment": "staging",
+        "version": 1
+      }]
+    }));
+  </script>
+
+  <script>
+    esriConfig = {
+      locale: "en-CA"
+    };
+  </script>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css">
+
+</head>
+
+<body>
+  <div id="def-top">
+    <!-- Write closure fall-back static file -->
+    <!-- /ROOT/etc/designs/canada/cdts/gcweb/v4_0_44/cdts/static/top-en.html -->
+    <!--#include virtual="/app/cls/WET/gcweb/v4_0_44/cdts/static/top-en.html" -->
+  </div>
+  <!-- Write closure template -->
+  <script>
+    var defTop = document.getElementById("def-top");
+    defTop.outerHTML = wet.builder.top({
+      "lngLinks": [{
+        "lang": "fr",
+        "href": "../fr/index.html",
+        "text": "Français"
+      }],
+      breadcrumbs: [
+        { "title": "Canada.ca", "href": "https:\/\/www.canada.ca\/en.html" },
+        { "title": "Natural Resources Canada", "href": "https:\/\/www.nrcan.gc.ca\/home" },
+        { "title": "Maps, Tools and Publications", "href": "https:\/\/www.nrcan.gc.ca\/maps-tools-and-publications\/21448" },
+        { "title": "Maps", "href": "https:\/\/www.nrcan.gc.ca\/maps-tools-and-publications\/maps\/22020" },
+        { "title": "Canada Lands Surveys", "href": "https:\/\/www.nrcan.gc.ca\/maps-tools-and-publications\/maps\/canada-lands-surveys\/10780" },
+        { "title": "Canada Lands Surveys: Tools and data", "href": "https:\/\/www.nrcan.gc.ca\/maps-tools-and-publications\/maps\/canada-lands-surveys\/tools-applications-canada-lands-surveys\/11094" },
+        { "title": "Map Browser" }
+      ]
+    });
+  </script>
+
+  <main property="mainContentOfPage" class="container" resource="#wb-main" typeof="WebPageElement">
+    <h1>CLSS Map Browser</h1>
+    <section class="alert alert-info">
+      <p class="mrgn-tp-md">We are pleased to launch this new CLSS Map Browser. Users should update their bookmarks to this page. The old
+        <a href="https://clss.nrcan-rncan.gc.ca/clss/map-carte/index">CLSS Map Browser</a> will continue to remain active until September 2022. 
+        If you require assistance using this new tool, please contact us at the following email:
+        <a href="mailto://clss-satc@nrcan-rncan.gc.ca">clss-satc@nrcan-rncan.gc.ca</a>
+      </p>
+    </section>
+    <details class="mrgn-bttm-md">
+      <summary class="summary">Help - Click to show or hide</summary>
+      <div class="col-sm-12">
+        <p class="mrgn-tp-md">The CLSS Map Browser allows users to
+          browse the Canada Lands Survey System (CLSS) cadastral data to
+          search and visualize related survey parcels and plans maintained by
+          the Surveyor General Branch (SGB). Users can navigate within the
+          map using a mouse or keyboard and query the data using attribute
+          searches.</p>
+
+        <h2 class="mrgn-tp-md">User Guide</h2>
+        <p>
+          Please refer to the <a href="/clss-satc/pdfs/clss-map-browser-22-en.pdf">CLSS Map
+            Browser user guide</a> (PDF, 2.47 MB) for more information on the
+          application.
+        </p>
+        <p>
+          See our <a href="/clss-satc/pdfs/clss-placemat-acc-e.pdf">placemat</a>
+          to help choose the right tool.
+        </p>
+
+        <h2 class="mrgn-tp-md">Note to Keyboard Users</h2>
+        <p>The map can be operated using the keyboard by tabbing to the
+          map control and placing focus. The navigation keys are as follows:</p>
+        <ul>
+          <li>"+": zoom in</li>
+          <li>"-": zoom out</li>
+          <li>Arrow keys: pan</li>
+        </ul>
+
+        <h2 class="mrgn-tp-md">Browser Requirements</h2>
+        <p>The CLSS Map Browser is designed to work in various web
+          browsers and no plugins are required to access the application.
+          However, other data accessible through the browser, such as survey
+          plans, require the use of third party applications to view the plan
+          images.</p>
+        <ul>
+          <li>JavaScript must be enabled</li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </details>
+
+    <div id="mapDiv" class="col-sm-12" data-dojo-type="dijit/layout/BorderContainer"
+      title="Canada Lands Survey System - Map Browser"
+      tabindex="0" role="application">
+      <app-root></app-root>
+    </div>
+
+    <div id="def-preFooter">
+      <!-- Write closure fall-back static file -->
+      <!-- /ROOT/etc/designs/canada/cdts/gcweb/v4_0_44/cdts/static/preFooter-en.html -->
+      <!--#include virtual="/app/cls/WET/gcweb/v4_0_44/cdts/static/preFooter-en.html" -->
+    </div>
+    <!-- Write closure template -->
+    <script>
+      var defPreFooter = document.getElementById("def-preFooter");
+      defPreFooter.outerHTML = wet.builder.preFooter({
+        "dateModified": "2022-07-04"
+      });
+    </script>
+  </main>
+
+  <div id="def-footer">
+    <!-- Write closure fall-back static file -->
+    <!-- /ROOT/app/cls/WET/gcweb/v4_0_44/cdts/static/footer-en.html -->
+    <!--#include virtual="/app/cls/WET/gcweb/v4_0_44/cdts/static/footer-en.html" -->
+  </div>
+  <!-- Write closure template -->
+  <script>
+    var defFooter = document.getElementById("def-footer");
+    defFooter.outerHTML = wet.builder.footer({
+    });
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"
+    integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB"
+    crossorigin="anonymous">
+  </script>
+
+  <!-- Write closure template -->
+  <script>
+    document.write(wet.builder.refFooter({
+      "webAnalytics": true
+    }));
+  </script>
+
+</body>
+
+</html>
